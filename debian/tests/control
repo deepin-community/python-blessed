@@ -1,0 +1,9 @@
+Tests: python3-blessed
+Depends: @,
+         python3-all,
+         python3-mock,
+         python3-pil,
+         python3-pytest,
+         python3-pytest-cov,
+         python3-pytest-xdist
+Restrictions: allow-stderr

@@ -1,0 +1,19 @@
+From: =?utf-8?q?Pierre-Elliott_B=C3=A9cue?= <peb@debian.org>
+Date: Fri, 23 Dec 2022 21:15:18 +0100
+Subject: Drop looponfailroots argument as it's deprecated in pytext-xdist
+Forwarded: https://github.com/jquast/blessed/pull/244
+
+---
+ tox.ini | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tox.ini b/tox.ini
+index bf14cab..8244e51 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -288,5 +288,4 @@ addopts =
+ filterwarnings = error
+ junit_family = xunit1
+ log_format=%(levelname)s %(relativeCreated)2.2f %(filename)s:%(lineno)d %(message)s
+-looponfailroots = blessed
+ norecursedirs = .git .tox build

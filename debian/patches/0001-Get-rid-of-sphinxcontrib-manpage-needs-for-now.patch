@@ -1,0 +1,120 @@
+From: =?utf-8?q?Pierre-Elliott_B=C3=A9cue?= <peb@debian.org>
+Date: Tue, 26 May 2020 15:50:50 +0200
+Subject: Get rid of sphinxcontrib-manpage needs for now
+
+The module is not packaged in Debian, and the manpages are already
+present on a Debian system
+---
+ docs/conf.py          | 2 +-
+ docs/keyboard.rst     | 4 ++--
+ docs/project.rst      | 6 +++---
+ docs/requirements.txt | 1 -
+ docs/terminal.rst     | 8 ++++----
+ 5 files changed, 10 insertions(+), 11 deletions(-)
+
+diff --git a/docs/conf.py b/docs/conf.py
+index 5835ab0..a2854d4 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -74,7 +74,7 @@ extensions = ['sphinx.ext.autodoc',
+               'sphinx.ext.intersphinx',
+               'sphinx.ext.viewcode',
+               # 'sphinxcontrib.napoleon',
+-              'sphinxcontrib.manpage',
++              # 'sphinxcontrib.manpage',
+               'github',
+               'sphinx_paramlinks',
+               ]
+diff --git a/docs/keyboard.rst b/docs/keyboard.rst
+index 78aa8c5..13ab1c9 100644
+--- a/docs/keyboard.rst
++++ b/docs/keyboard.rst
+@@ -45,7 +45,7 @@ what key we pressed.
+     :alt: A visual example of interacting with the Terminal.inkey() and cbreak() methods.
+ 
+ :meth:`~.Terminal.cbreak` enters a special mode_ that ensures :func:`os.read` on an input stream
+-will return as soon as input is available, as explained in :linuxman:`cbreak(3)`. This mode is
++will return as soon as input is available, as explained in `cbreak(3)` manpage. This mode is
+ combined with :meth:`~.Terminal.inkey` to decode multibyte sequences, such as ``\0x1bOA``, into
+ a unicode-derived :class:`~.Keystroke` instance.
+ 
+@@ -68,7 +68,7 @@ When the :attr:`~.Keystroke.is_sequence` property tests *True*, the value of
+ :attr:`~.Keystroke.code` represents a unique application key of the keyboard.
+ 
+ :attr:`~.Keystroke.code` may then be compared with attributes of :class:`~.Terminal`,
+-which are duplicated from those found in :linuxman:`curses(3)`, or those `constants
++which are duplicated from those found in `curses(3)`, or those `constants
+ <https://docs.python.org/3/library/curses.html#constants>`_ in :mod:`curses` beginning with phrase
+ *KEY_*, as follows:
+ 
+diff --git a/docs/project.rst b/docs/project.rst
+index 1f8586e..b89c5f3 100644
+--- a/docs/project.rst
++++ b/docs/project.rst
+@@ -55,11 +55,11 @@ As a developer's API, blessed is often bundled with frameworks and toolsets that
+ Terminal I/O programming than :class:`~.Terminal` offers.  Here are some recommended readings to
+ help you along:
+ 
+-- The :linuxman:`terminfo(5)` manpage of your preferred posix-like operating system. The
++- The `terminfo(5)` manpage of your preferred posix-like operating system. The
+   capabilities available as attributes of :class:`~.Terminal` are directly mapped to those listed in
+   the column **Cap-name**.
+ 
+-- The :linuxman:`termios(3)` of your preferred posix-like operating system.
++- The `termios(3)` manpage of your preferred posix-like operating system.
+ 
+ - `The TTY demystified <http://www.linusakesson.net/programming/tty/index.php>`_ by Linus Åkesson.
+ 
+@@ -89,7 +89,7 @@ help you along:
+   of a terminal capability", or whether or not your preferred terminal emulator actually handles
+   them, read the source! Many modern terminal emulators are now based on `libvte <https://github.com/GNOME/vte>`_.
+ 
+-- The source code of the :linuxman:`tty(4)`, :linuxman:`pty(7)`, and the given "console driver" for
++- The source code of the `tty(4)`, `pty(7)`, and the given "console driver" for
+   any posix-like operating system.  If you search thoroughly enough, you will eventually discover a
+   terminal sequence decoder, usually a ``case`` switch that translates ``\x1b[0m`` into a "reset
+   color" action towards the video driver.  Though ``tty.c`` linked here is probably not the most
+diff --git a/docs/requirements.txt b/docs/requirements.txt
+index 9d001e7..22dad06 100644
+--- a/docs/requirements.txt
++++ b/docs/requirements.txt
+@@ -3,4 +3,3 @@ Sphinx>3
+ jinxed
+ sphinx-paramlinks
+ sphinx_rtd_theme
+-sphinxcontrib-manpage
+diff --git a/docs/terminal.rst b/docs/terminal.rst
+index 4e7d016..f679d37 100644
+--- a/docs/terminal.rst
++++ b/docs/terminal.rst
+@@ -44,10 +44,10 @@ And thanks to `f-strings`_ since python 3.6, it's very easy to mix attributes an
+ Capabilities
+ ------------
+ 
+-*Any capability* in the :linuxman:`terminfo(5)` manual, under column **Cap-name** can be an
++*Any capability* in the `terminfo(5)` manual, under column **Cap-name** can be an
+ attribute of the :doc:`terminal` class, such as 'smul' for 'begin underline mode'.
+ 
+-There are **a lot** of interesting capabilities in the :linuxman:`terminfo(5)` manual page, but many
++There are **a lot** of interesting capabilities in the `terminfo(5)` manual page, but many
+ of these will return an empty string, as they are not supported by your terminal. They can still be
+ used, but have no effect. For example, ``blink`` only works on a few terminals, does yours?
+ 
+@@ -123,7 +123,7 @@ can do. These are:
+ Full-Screen Mode
+ ----------------
+ 
+-If you've ever noticed how a program like :linuxman:`vim(1)` restores you to your unix shell history
++If you've ever noticed how a program like `vim(1)` restores you to your unix shell history
+ after exiting, it's actually a pretty basic trick that all terminal emulators support, that
+ *blessed* provides using the :meth:`~Terminal.fullscreen` context manager over these two basic
+ capabilities:
+@@ -143,7 +143,7 @@ capabilities:
+ Pipe Savvy
+ ----------
+ 
+-If your program isn't attached to a terminal, such as piped to a program like :linuxman:`less(1)` or
++If your program isn't attached to a terminal, such as piped to a program like `less(1)` or
+ redirected to a file, all the capability attributes on :class:`~.Terminal` will return empty strings
+ for any :doc:`colors`, :doc:`location`, or other sequences.  You'll get a nice-looking file without
+ any formatting codes gumming up the works.
