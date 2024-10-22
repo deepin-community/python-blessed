@@ -1,5 +1,157 @@
-template-repository (1.0-1) unstable; urgency=medium
+python-blessed (1.19.1-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream release 1.19.1
+  * d/p/0002: Remove a deprecated flag on tox.ini (Closes: #1026472)
+  * d/t/python3-blessed:
+    - Symlink the installed blessed libso that coverage
+      doesn't fail
+    - Use py3versions -s instead of -r
+  * d/control: Bump Standards-Version to 4.6.1
+  * d/watch: update the github link to fetch from tags
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Pierre-Elliott Bécue <peb@debian.org>  Sat, 24 Dec 2022 01:10:14 +0100
+
+python-blessed (1.19.0-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Trim trailing whitespace.
+
+  [ Pierre-Elliott Bécue ]
+  * New upstream release 1.19.0
+  * d/control:
+    - Bump Standards-Version to 4.6.0
+
+ -- Pierre-Elliott Bécue <peb@debian.org>  Sat, 09 Oct 2021 13:01:09 +0200
+
+python-blessed (1.17.12-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Update Maintainer field with new Debian Python Team
+    contact address.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Pierre-Elliott Bécue ]
+  * New upstream release 1.17.12
+  * Bump Standards-Version to 4.5.1
+
+ -- Pierre-Elliott Bécue <peb@debian.org>  Sat, 16 Jan 2021 23:46:19 +0100
+
+python-blessed (1.17.10-1) unstable; urgency=medium
+
+  * New upstream release 1.17.10 (Closes: #966998)
+
+ -- Pierre-Elliott Bécue <peb@debian.org>  Fri, 04 Sep 2020 22:09:46 +0200
+
+python-blessed (1.17.8-1) unstable; urgency=medium
+
+  [ Andreas Tille ]
+  * Team upload.
+  * New upstream version
+  * Respect DEB_BUILD_OPTIONS in override_dh_auto_test target (routine-
+    update)
+  * Add salsa-ci file (routine-update)
+
+  [ Shayan Doust ]
+  * Prevent sphinx from fetching intersphinx inventory files from the internet
+
+ -- Andreas Tille <tille@debian.org>  Wed, 15 Jul 2020 22:13:26 +0200
+
+python-blessed (1.17.6-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+  [ Pierre-Elliott Bécue ]
+  * New upstream release 1.17.6
+    - Removed old patch 0001
+    - Add new patch 0001-Get-rid-of-sphinxcontrib-manpage-needs-for-now.patch
+      as sphinxcontrib-manpage is not available in Debian and having it
+      packaged is not really a priority
+  * d/control:
+    - Bump Standards-Version to 4.5.0
+    - Bump debhelper-compat level to 13
+    - Add the necessary Build-Deps and Deps to have the documentation built in
+      the package
+  * d/rules:
+    - Builds the documentation
+  * d/tests:
+    - Sets up autopkgtest tests
+
+ -- Pierre-Elliott Bécue <peb@debian.org>  Tue, 26 May 2020 17:16:26 +0200
+
+python-blessed (1.16.1-1) unstable; urgency=medium
+
+  * New upstream release 1.16.1
+  * d/control:
+    - Bump Standards-Version to 4.4.1
+    - Bump debhelper-compat level to 12
+
+ -- Pierre-Elliott Bécue <peb@debian.org>  Wed, 25 Dec 2019 19:50:24 +0100
+
+python-blessed (1.15.0-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Andrey Rahmatullin ]
+  * Drop Python 2 support.
+
+ -- Andrey Rahmatullin <wrar@debian.org>  Mon, 12 Aug 2019 22:36:45 +0500
+
+python-blessed (1.15.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/copyright: Use https protocol in Format field
+
+  [ Pierre-Elliott Bécue ]
+  * Drop git-dpm stuff
+  * New upstream release 1.15.0 (Closes: #903137)
+  * d/control:
+    - Bump Standards-Version to 4.1.5. Implements R3
+    - Add myself to uploaders
+
+ -- Pierre-Elliott Bécue <becue@crans.org>  Sun, 29 Jul 2018 15:38:34 +0200
+
+python-blessed (1.14.2-3) unstable; urgency=medium
+
+  * Team upload.
+  * d/patches/0001: _Really_ remove all time-based assertions in
+    test_keyboard.py
+
+ -- Pierre-Elliott Bécue <becue@crans.org>  Tue, 09 Jan 2018 08:46:59 +0100
+
+python-blessed (1.14.2-2) unstable; urgency=medium
+
+  * Team upload.
+  * d/patches/0001: Remove all time-based assertions in test_keyboard.py.
+    (Closes: #864337)
+  * Remove d/clean as the egg files are included in the git repo since the
+    beginning, and it's not coherent with the current package's behaviour.
+
+ -- Pierre-Elliott Bécue <becue@crans.org>  Wed, 03 Jan 2018 01:18:43 +0100
+
+python-blessed (1.14.2-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream release 1.14.2
+  * Add a patch to remove a not reliable test assertion. (Closes: #864337)
+  * d/control:
+    - Bump Standards-Version to 4.1.3.
+    - Change Build-Depends for debhelper to 11
+    - Add a basic Testsuite
+    - Remove X-Python3?-Version tags
+  * d/compat: Bump to 11
+  * d/watch: version bump to 4 and https link with uscan tags
+
+ -- Pierre-Elliott Bécue <becue@crans.org>  Sun, 31 Dec 2017 14:01:34 +0100
+
+python-blessed (1.14.1-1) unstable; urgency=low
+
+  * Initial release. Closes: #823819
+
+ -- ChangZhuo Chen (陳昌倬) <czchen@debian.org>  Mon, 09 May 2016 21:59:05 +0800
